@@ -3,13 +3,23 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {spy} from 'mobx'
+import {StoreContext} from '../src/store/contextStore'
+import {RootStore} from '../src/store/rootStore'
 
+// spy(ev=>{
+//   if(ev.type === 'action'){
+//     console.log(ev)
+//   }
+// })
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <StoreContext.Provider value={new RootStore()}>
+             <App/>
+    </StoreContext.Provider>
   </React.StrictMode>
 );
 
